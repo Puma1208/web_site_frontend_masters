@@ -1,0 +1,93 @@
+h1{
+    grid-area: "text";
+    color: rgb(248, 241, 193);
+    align-items: center;
+}
+.coffee-icon{
+    height: 45px;
+}
+.start {
+    padding:20px;
+    /* margin:5px; */
+    /* border: 5px; */
+    display: flex;
+    align-items: center;
+    background-color: rgb(67, 41, 28);
+    grid-template-areas: "text";
+    justify-content:center;
+}
+.block{
+    background-color: rgb(233, 223, 211);
+}   
+div{
+    background-color:gray;
+}
+.block-items{
+    grid-area: items;
+    /* background-color: red; */
+    padding: 10px;
+    
+}
+
+.block-name{
+    grid-area: name;
+    /* background-color: rgba(0, 213, 255, 0.715); */
+    padding: 10px;
+}
+.block-payment{
+    grid-area: payment;
+    /* background-color: rgb(116, 252, 175); */
+    padding: 10px;
+} 
+.input-order{
+    /* display: grid; */
+    justify-content: space-around;
+    /* border: 100px; */
+    flex-direction:row;
+    display: flex;
+
+    /* grid-template-areas: 
+    "items name"
+    "items payment"; */
+}
+
+.col1{
+    /* background-color: rgba(64, 224, 208, 1); */
+    display: flex;
+}
+.col2{
+    display: flex;
+    /* background-color: green; */
+    flex-direction: column;
+    
+}
+.main-section{
+    background-color: rgb(239, 239, 239);
+    /* border: 10px; */
+    /* margin: 20px; */
+    padding: 20px; 
+}
+.column{
+    flex-direction: column;
+}
+.payment-section{
+    background-color: blueviolet;
+}
+
+.block{
+    background-color: rgb(233, 223, 211);
+    border:20px;
+    margin:10px;
+    padding:10px;
+}
+
+h2{
+    /* color: rgba(255, 149, 0, 0.534); */
+    color: rgb(67, 41, 28);
+    
+}
+ul{
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+}
