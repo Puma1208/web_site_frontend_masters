@@ -1,93 +1,185 @@
-h1{
-    grid-area: "text";
-    color: rgb(248, 241, 193);
-    align-items: center;
+* {
+    box-sizing: border-box;
 }
-.coffee-icon{
-    height: 45px;
+nav{
+    display: flex;
+    align-items:center;
+    justify-content:center;
 }
 .start {
     padding:20px;
-    /* margin:5px; */
-    /* border: 5px; */
-    display: flex;
     align-items: center;
     background-color: rgb(67, 41, 28);
     grid-template-areas: "text";
-    justify-content:center;
+}
+h1{
+    grid-area: "text";
+    color: rgb(251, 242, 193);
+    align-items: center;
+}
+body{
+    margin:0;
+    padding:0;
+    font-family: 'Open Sans', sans-serif;
+}
+.coffee-icon{
+    height: 45px;
+    position: relative;
 }
 .block{
-    background-color: rgb(233, 223, 211);
+    background-color: rgb(238, 225, 213);
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgb(200, 200, 200);;
+    padding:15px;
+    margin-bottom:20px;
+    width: 100%;
 }   
-div{
-    background-color:gray;
-}
 .block-items{
     grid-area: items;
-    /* background-color: red; */
-    padding: 10px;
-    
 }
 
 .block-name{
     grid-area: name;
-    /* background-color: rgba(0, 213, 255, 0.715); */
-    padding: 10px;
 }
 .block-payment{
     grid-area: payment;
-    /* background-color: rgb(116, 252, 175); */
-    padding: 10px;
 } 
 .input-order{
-    /* display: grid; */
     justify-content: space-around;
-    /* border: 100px; */
     flex-direction:row;
     display: flex;
-
-    /* grid-template-areas: 
-    "items name"
-    "items payment"; */
 }
-
-.col1{
-    /* background-color: rgba(64, 224, 208, 1); */
+.payment-section{
+    justify-content: space-around;
+    flex-direction: column;
     display: flex;
 }
+.col{
+    flex-direction: column;
+    width: 50%;
+    height:fit-content;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 20px;
+}
+.col1{
+    display: flex;
+}
+
 .col2{
     display: flex;
-    /* background-color: green; */
     flex-direction: column;
-    
 }
 .main-section{
     background-color: rgb(239, 239, 239);
-    /* border: 10px; */
-    /* margin: 20px; */
-    padding: 20px; 
 }
 .column{
     flex-direction: column;
-}
-.payment-section{
-    background-color: blueviolet;
+    width: 50%;
+    margin-left: 1%;
+    margin-right: 1%;
+    margin-top: 20px;
 }
 
-.block{
-    background-color: rgb(233, 223, 211);
-    border:20px;
-    margin:10px;
-    padding:10px;
-}
 
 h2{
-    /* color: rgba(255, 149, 0, 0.534); */
-    color: rgb(67, 41, 28);
-    
+    margin:0px;
+    color: rgb(137, 90, 45);
+    font-size: 16px;
+    font-weight:100;
+    font-size:smaller;
+    font-family: "Open Sans", sans-serif;
+    margin-bottom: 3%;
+    margin-top: 3%;
 }
 ul{
     list-style-type: none;
     margin: 0px;
+    margin-top: 10px;
     padding: 0px;
+}
+.amount{
+    font-weight: 100;;
+}
+li{
+    font-size: small;   
+}
+
+.item-amount-price{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.item-details{
+    justify-content: left;
+    display:flex;
+    flex-direction:row;
+}
+.item-add-on{
+    color: rgb(176, 136, 96);
+}
+
+.item-block{
+    padding-left: 20px;
+    padding-right: 50px;
+}
+.price{
+    margin-right: 20px;
+}
+.hr-coffee{
+    color: rgb(221, 184, 146);
+    border: 1px solid;
+}
+
+
+.group-input{
+    position: relative;
+    flex-direction: column;
+    margin: 10px 5px;
+}
+
+.input-text-section{
+    background-color: rgb(233, 223, 211);
+    color: rgb(137, 90, 45);
+    font-size: 11px;
+    position: absolute;
+    left: 20px;
+    top:-7px;
+    padding: 0 2px;
+    width:fit-content;
+}
+.input-text-default{
+    text-indent: 18px;
+    border: 2px rgb(137, 90, 45) solid;
+    color: rgb(137, 90, 45);
+    padding: 8px;
+    border-radius: 40px;
+    background-color: rgba(238, 225, 13, 0);
+    width:100%;
+}
+button{
+    background-color: rgb(222, 185, 147);
+    border: none;
+    color: rgb(67, 41, 28);
+    padding: 15px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 60px;
+    margin: 4%;
+}
+.receipt{
+    align-content: center;
+    
+}
+.important{
+    font-weight: bold;
+}
+.receipt-item{
+    margin-left:30%;
+    margin-right:30%;
+    padding:1%;
+}
+.payment-boxes{
+    margin-bottom:4%;
 }
