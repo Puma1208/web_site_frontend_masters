@@ -25,43 +25,99 @@
                     <h2>ITEMS</h2>
                     <ul>
                         <li class="item-amount-price">
-                            <div class="amount">1x</div>
-                            <div class="item-name">Cappuccino</div>
-                            <div class="item-add-on">Life foam</div>
-                            <div class="price">$3.35</div>
+                            <div class="item-details">
+                                <div class="amount">1x</div>
+                                <div class="item-block">
+                                    <div class="important">Cappuccino</div>
+                                    <ul class="item-add-on">
+                                        <li>Lite foam</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="price important">$3.35</div>
                         </li>
+                        <hr class="hr-coffee">
                         <li class="item-amount-price">
-                            <div class="amount">1x</div>
-                            <div class="item-name">Cappuccino</div>
-                            <ul class="item-add-on">
-                                <li>Lite foam</li>
-                                <li>Double espresso</li>
-                            </ul>
-                            <div class="price">$3.85</div>
+                            <div class="item-details">
+                                <div class="amount">1x</div>
+                                <div class="item-block">
+                                    <div class="important">Cappuccino</div>
+                                    <ul class="item-add-on">
+                                        <li>Lite foam</li>
+                                        <li>Double espresso</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="price important">$3.85</div>
                         </li>
+                        <hr class="hr-coffee">
                         <li class="item-amount-price">
-                            <div class="amount">1x</div>
-                            <div class="item-name">Croissant</div>
-                            <div class="item-add-on">Butter</div>
-                            <div class="price">$2.45</div>
+                            <div class="item-details">
+                                <div class="amount">1x</div>
+                                <div class="item-block">
+                                    <div class="important">Croissant</div>
+                                    <ul class="item-add-on">
+                                        <li>Butter</li>
+                                    </ul>
+                                </div>
+                            </div>
+                                
+                            <div class="price important">$2.45</div>
                         </li>
                     </ul>
                 </section>
             </section>
-            
             <section class="col2 col">
                 <section class="block-name block">
-                    <h2>Name</h2>
+                    <h2>NAME</h2>
+                    <div>
+                        <div class="name-text-field">
+                            <div class="name-text-box">    
+                            </div>
+                            
+                        </div>
+                    </div>
+                    <div class="group-input">
+                        <label class="input-text-section">Name for order</label>
+                        <input class="input-text-default"/>
+                        <!-- <input class="input-text-default" placeholder="e.g. Ford Perfect"/> -->
+                    </div>
                 </section>
                 <section class="block-payment block">
-                    <h2>Payment</h2>
+                    <h2>PAYMENT</h2>
+                    <div class="payment-boxes">
+                        <div class="group-input">
+                            <label class="input-text-section">Card number</label>
+                            <input class="input-text-default"/>
+                            <!-- <input class="input-text-default" placeholder="1234 5678 9012 3456"/> -->
+                        </div>
+                        <div class="group-input">
+                            <label class="input-text-section">CCV Number</label>
+                            <input class="input-text-default"/>
+                            <!-- <input class="input-text-default" placeholder="001"/> -->
+                        </div>
+                    </div>
                 </section>
             </section>
-
         </section>
-        <section class="payment-section column">
-            <section class="receipt">receipt</section>
-            <section class="place-order">Place order</section>
+        <section class="payment-section">
+            <section class="payment-boxes">
+                <ul>
+                    <li class="item-amount-price receipt-item">
+                        <div class="item-details">Subtotal:</div>
+                        <div class="price">$19.27</div>
+                    </li>
+                    <li class="item-amount-price receipt-item">
+                        <div class="item-details">Tax:</div>
+                        <div class="price">$0.96</div>
+                    </li>
+                    <li class="item-amount-price total receipt-item">
+                        <div class="important">Subtotal:</div>
+                        <div class="price important">$20.23</div>
+                    </li>
+                </ul>
+            </section>
+            <button>Place order</button>
         </section>
     </div>
 </body>
