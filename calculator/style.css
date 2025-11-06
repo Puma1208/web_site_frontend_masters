@@ -1,0 +1,24 @@
+body{
+    height:100%;
+}
+
+.buttons{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 5px;
+    column-gap: 5px;
+}
+.op{
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 5px;;
+}
+button{
+    background-color: rgb(216, 217, 219);
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+.operation{
+    background-color: rgb(255, 139, 0);
+}
