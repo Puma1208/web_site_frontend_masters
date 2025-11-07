@@ -1,24 +1,96 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
 body{
     height:100%;
+    background-color: rgb(58, 58, 70);
+    align-content: center;
 }
-
+div{
+    flex-flow: column;
+    box-sizing: border-box;
+    height: 100%;
+}
+.focus{
+    text-align: right;
+}
 .buttons{
+    height: 100vh;
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-areas: 
+    "del del op" 
+    "numbers numbers op"
+    "numbers numbers op"
+    "numbers numbers op"
+    "numbers numbers op";
+    row-gap: 5px;
+    column-gap: 5px;
+    text-align: center;
+    /* height: 500px;
+    width: 400px;   */
+}
+.del{
+    grid-area:del;
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 5px;
+}
+.numbers{
+    display: grid;
+    grid-area: numbers;
+    grid-template-columns: 1fr 1fr 1fr;
+    flex-direction: row-reverse;
+    flex-direction:initial;
     row-gap: 5px;
     column-gap: 5px;
 }
 .op{
     display: grid;
+    grid-area: op;
     grid-template-columns: 1fr;
-    row-gap: 5px;;
+    row-gap: 5px;
+    column-gap: 5px;
 }
 button{
+    height: 100%;
     background-color: rgb(216, 217, 219);
     border: 0px;
     margin: 0px;
     padding: 0px;
+    color:rgb(113, 116, 121);
+    font-size: large;
+}
+.del-operation{
+    border:0px;
+    margin:0px;
+    padding:0px;
+    column-gap: 5px;
+}
+.number{
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    row-gap: 5px;;
+    column-gap: 5px;
+
 }
 .operation{
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
     background-color: rgb(255, 139, 0);
+    color: white;
+    row-gap: 5px;;
+    column-gap: 5px;;
+}
+.triple{
+    grid-column-start: 1;
+    grid-column-end: 4;
+}
+.double{
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
