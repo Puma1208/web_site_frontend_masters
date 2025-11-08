@@ -2,7 +2,11 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-size: 40px;
+    font-family: "Courier New", Courier, monospace;
+
 }
+
 body{
     height:100%;
     background-color: rgb(58, 58, 70);
@@ -13,8 +17,22 @@ div{
     box-sizing: border-box;
     height: 100%;
 }
+.calculation-details{
+    color:rgb(176, 176, 176);
+    text-align: right;
+    padding:10px;
+    margin-bottom:0px;
+    margin-right:10px;
+    font-size: 10px;
+}
 .focus{
     text-align: right;
+    size: 10%;
+    padding:5px;
+    margin:5px;
+    margin-right:10px;
+    margin-top:0px;
+    color:white;
 }
 .buttons{
     height: 100vh;
