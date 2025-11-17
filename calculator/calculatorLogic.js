@@ -77,3 +77,43 @@ for(let i=0; i<operationButtons.length; i++){
         operationButtons[i].style.backgroundColor='';
     })
 }
+// calculationDetails.textContent = computation;
+
+const COMPUTATIONS = ["+", "-", "x", "÷"]
+function getComputationResult(computationString){
+
+    let result = 0;
+    let currentDigits = "";
+    let currentOperation = "";
+
+    for(let i=0; i<computationString.length;i++){
+        if (COMPUTATIONS.includes(computationString[i]) || i == computationString.length-1){
+            if (currentOperation){
+                if (i==computationString.length-1){
+                    currentDigits += computationString[i];
+                }
+                if (currentOperation=="+"){
+                    result += Number(currentDigits);
+                }
+                else if(currentOperation=="-"){
+                    result -= Number(currentDigits);
+                }
+                else if (currentOperation=="x"){
+                    result *= Number(currentDigits);
+                }
+                else if (currentOperation=="÷"){
+                    result /= Number(currentDigits);
+                }
+                else{
+                    return "ERROR: the current operation " + currentOperation + " is not a legal operation.";
+                }
+                currentDigits = "";
+                currentOperation = "";
+            }
+        }
+        else{
+            currentDigits += computationString[i];
+        }
+    }
+    return result
+}
