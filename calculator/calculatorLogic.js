@@ -90,14 +90,14 @@ for(let i=0; i<operationButtons.length; i++){
 
 const COMPUTATIONS = ["+", "-", "x", "÷"]
 function getComputationResult(digits1, digits2, operation){
-    switch (sumbol){
+    switch (operation){
         case "+":
             return Number(digits1) + Number(digits2);
         case "-":
             return Number(digits1) - Number(digits2);
-        case "+":
+        case "x":
             return Number(digits1) * Number(digits2);
-        case "+":
+        case "÷":
             return Number(digits1) / Number(digits2);
     }
     return "ERROR: the current operation " + operation + " is not a legal operation.";
