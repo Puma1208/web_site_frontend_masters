@@ -90,19 +90,16 @@ for(let i=0; i<operationButtons.length; i++){
 
 const COMPUTATIONS = ["+", "-", "x", "÷"]
 function getComputationResult(digits1, digits2, operation){
-    if (operation=="+"){
-        return Number(digits1) + Number(digits2);
+    switch (sumbol){
+        case "+":
+            return Number(digits1) + Number(digits2);
+        case "-":
+            return Number(digits1) - Number(digits2);
+        case "+":
+            return Number(digits1) * Number(digits2);
+        case "+":
+            return Number(digits1) / Number(digits2);
     }
-    else if(operation=="-"){
-        return Number(digits1) - Number(digits2);
-    }
-    else if (operation=="x"){
-        return Number(digits1) * Number(digits2);
-    }
-    else if (operation=="÷"){
-        return Number(digits1) / Number(digits2);
-    }
-    else{
-        return "ERROR: the current operation " + operation + " is not a legal operation.";
-    }
+    return "ERROR: the current operation " + operation + " is not a legal operation.";
+
 }
