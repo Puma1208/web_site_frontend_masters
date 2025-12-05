@@ -1,0 +1,45 @@
+
+@font-face {
+    font-family: elegant;
+    src: url("https://fonts.google.com/share?selection.family=Ballet:opsz@16..72|Mea+Culpa|Rubik:ital,wght@0,300..900;1,300..900|Science+Gothic:wght@100..900");
+}
+body{
+    align-items: center;
+    flex-flow: column;
+    font-family: "Rubik", sans-serif;
+    color:rgb(84, 85, 86);
+}
+div{
+    background-color: #f0f0f0;
+    margin: auto;
+    /* width: 60px; */
+
+}
+.title{
+    border-style: solid;
+    /* height: 100px; */
+    width: auto;
+    margin:40px 50px 20px 50px;
+    border:10px;
+    padding: 20px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 40px;
+}
+.loading-logo{
+    /* height: 80px; */
+    width: auto;
+    margin:10px 50px 20px 50px;
+    border:10px;
+    padding: 20px;
+    text-align: center;
+    vertical-align: center;
+    line-height: 80px;
+}
+.answer{
+
+    height: 400px;
+    width: auto;
+    margin:10px 50px 20px 50px;
+
+}
