@@ -10,4 +10,6 @@ Expected                   | Mine
 ## Calculator
 
 My result for the calculator assignment using `css`, `html` and `javascript` is as follows:
+
+
 <img src="calculator/Calculator.jpeg" alt="drawing" height="200"/>
