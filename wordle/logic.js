@@ -12,26 +12,29 @@ function isLetter(el){
 }
 
 document.addEventListener('keydown', function(event){
-  key = event.key;
+  const key = event.key;
   if (isLetter(key)){
     next_letter_box.textContent = key.toUpperCase();
-    console.log(next_letter_box.nextElementSibling);
     updateNextLetterBox();
+  }else if (key=="Backspace" || key=="Delete"){
+    deletePreviousLetter();
   }
 })
 
-function updateNextLetterBox(){
-  // 1.
-  // console.log("🤖", letter_boxes.length);
-  // if (next_letter_box.nextElementSibling==null){
-  //   current_row += 1;
-  //   next_letter_box = letter_boxes[current_row];
-  // }
-  // else{
-  //   next_letter_box = next_letter_box.nextElementSibling;
-  // }
+function deletePreviousLetter(){
+  if (next_letter_box.previousElementSibling != null ){
+    current = next_letter_box.previousElementSibling;
+    if (current.previousElementSibling){
+      next_letter_box.previousElementSibling.textContent = "";
+      next_letter_box = next_letter_box.previousElementSibling;
+    }else{
+      current.textContent = "";
+      next_letter_box = current;
+    }
+  }
+}
 
-  // 2.
+function updateNextLetterBox(){
   if (next_letter_box.nextElementSibling==null){
     current_row += 1;
     next_word_row = word_rows[current_row];
