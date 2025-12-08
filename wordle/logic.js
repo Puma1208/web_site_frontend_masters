@@ -18,7 +18,6 @@ document.addEventListener('keydown', function(event){
     console.log(next_letter_box.nextElementSibling);
     updateNextLetterBox();
   }
-  if (key)
 })
 
 function updateNextLetterBox(){
