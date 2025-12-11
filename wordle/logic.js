@@ -84,17 +84,29 @@ function getCorrectLetters(){
   let colors = [];
   // https://stackoverflow.com/a/31733628
   let copy_correct_word = (' ' + word).slice(1);
+
+  // First pass - only tagging green
+  for (let i=0; i<WORD_LENGTH; i++){
+    if (row_text[i]==word[i]){
+      console.log("ROW LETTER ", row_text[i]);
+      colors[i] = "green";
+      copy_correct_word = copy_correct_word.replace(word[i], "");
+    }
+  }
+
+  // Second pass - tag the rest
   for (let i=0; i<WORD_LENGTH; i++){
     let letter = row_text[i];
-    if (copy_correct_word.includes(letter)){
-      if (word[i]==letter){
-        colors[i] = "green";
-      }else{
-        colors[i] = "yellow";
+    if (colors[i]!='green'){
+
+      if (copy_correct_word.includes(letter)){
+          colors[i] = "yellow";
+          copy_correct_word = copy_correct_word.replace(letter, "");
       }
-      copy_correct_word = copy_correct_word.replace(letter, "");
-    }else{
-      colors[i] = "gray";
+      else
+      {
+        colors[i] = "gray";
+      }
     }
   }
   return colors;
