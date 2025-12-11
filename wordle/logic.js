@@ -1,12 +1,13 @@
-let letter_boxes = document.querySelectorAll(".input");
 let word_rows = document.querySelectorAll(".row");
-
 let current_row_index = 0;
 let next_letter_box = word_rows[current_row_index].children[0];
 
 let row_text = "";
 
-const word = "aword".toUpperCase();
+WORD_LENGTH = 5;
+const word = "guess".toUpperCase();
+
+let flagFinished = false;
 
 function isLetter(el){
     return /^[a-zA-Z]$/.test(el);
@@ -18,14 +19,14 @@ document.addEventListener('keydown', function(event){
 
 function handleKeyBoardInput(event){
   const key = event.key;
+  if (!flagFinished){
+    if (isLetter(key)){
+      handleNewLetter(key);
 
-  if (isLetter(key)){
-    handleNewLetter(key);
-
-  }else if (key=="Backspace" || key=="Delete"){
-    deletePreviousLetter();
+    }else if (key=="Backspace" || key=="Delete"){
+      deletePreviousLetter();
+    }
   }
-
 }
 
 
