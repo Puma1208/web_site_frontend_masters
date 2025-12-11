@@ -45,11 +45,16 @@ function updateTrackingVariable(letter){
 function updatePointer(){
   if (next_letter_box.nextElementSibling==null){
     if (isRowCorrectWord()){
-    console.log("🌋 YEAY! 🌋")
-  }
-    current_row_index += 1;
-    next_letter_box = word_rows[current_row_index].children[0];
-    row_text = "";
+    console.log("🌋 YEAY! 🌋");
+    }
+    if (current_row_index==word_rows.length-1){
+      flagFinished = true;
+    }
+    else{
+      current_row_index += 1;
+      next_letter_box = word_rows[current_row_index].children[0];
+      row_text = "";
+    }
   }else{
     next_letter_box = next_letter_box.nextElementSibling;
   }
