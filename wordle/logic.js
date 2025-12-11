@@ -44,6 +44,8 @@ function updateTrackingVariable(letter){
 
 function updatePointer(){
   if (next_letter_box.nextElementSibling==null){
+    const colors = getCorrectLetters();
+    markBoxesWithColors(colors);
     if (isRowCorrectWord()){
     console.log("🌋 YEAY! 🌋");
     }
@@ -76,4 +78,33 @@ function deletePreviousLetter(){
 
 function isRowCorrectWord(){
   return (row_text == word);
+}
+
+function getCorrectLetters(){
+  let colors = [];
+  // https://stackoverflow.com/a/31733628
+  let copy_correct_word = (' ' + word).slice(1);
+  for (let i=0; i<WORD_LENGTH; i++){
+    let letter = row_text[i];
+    if (copy_correct_word.includes(letter)){
+      if (word[i]==letter){
+        colors[i] = "green";
+      }else{
+        colors[i] = "yellow";
+      }
+      copy_correct_word = copy_correct_word.replace(letter, "");
+    }else{
+      colors[i] = "gray";
+    }
+  }
+  return colors;
+}
+
+function markBoxesWithColors(colors){
+  let letter_boxes = word_rows[current_row_index].children
+  for (let i=0;i<WORD_LENGTH;i++){
+    const current_color = colors[i];
+    letter_boxes[i].style.backgroundColor = current_color;
+    letter_boxes[i].style.borderColor = current_color;
+  }
 }
