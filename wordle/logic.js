@@ -5,7 +5,11 @@ let next_letter_box = word_rows[current_row_index].children[0];
 let row_text = "";
 
 WORD_LENGTH = 5;
-const word = "guess".toUpperCase();
+// const word = "magic".toUpperCase();
+
+let word = "";
+getWordOfTheDay();
+
 
 let flagFinished = false;
 
@@ -116,7 +120,15 @@ function markBoxesWithColors(colors){
   let letter_boxes = word_rows[current_row_index].children
   for (let i=0;i<WORD_LENGTH;i++){
     const current_color = colors[i];
-    letter_boxes[i].style.backgroundColor = current_color;
-    letter_boxes[i].style.borderColor = current_color;
+    letter_boxes[i].style.backgroundColor = colors_dictionary[current_color];
+    letter_boxes[i].style.borderColor = colors_dictionary[current_color];
+    letter_boxes[i].style.color = "white";
   }
+}
+
+async function getWordOfTheDay(){
+  const word_url = "https://words.dev-apis.com/word-of-the-day/";
+  const promise = await fetch(word_url);
+  const processResponse = await promise.json();
+  word = processResponse.word.toUpperCase();
 }
