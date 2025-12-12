@@ -10,7 +10,7 @@ const word = "guess".toUpperCase();
 let flagFinished = false;
 
 function isLetter(el){
-    return /^[a-zA-Z]$/.test(el);
+  return /^[a-zA-Z]$/.test(el);
 }
 
 document.addEventListener('keydown', function(event){
