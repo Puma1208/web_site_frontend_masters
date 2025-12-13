@@ -48,6 +48,7 @@ function updateTrackingVariable(letter){
 
 function updatePointer(){
   if (next_letter_box.nextElementSibling==null){
+    isWordValid();
     const colors = getCorrectLetters();
     markBoxesWithColors(colors);
     if (isRowCorrectWord()){
@@ -131,4 +132,15 @@ async function getWordOfTheDay(){
   const promise = await fetch(word_url);
   const processResponse = await promise.json();
   word = processResponse.word.toUpperCase();
+}
+
+async function isWordValid(){
+  const check_valid_word_url = "https://words.dev-apis.com/validate-word"
+  const check_word = {"word":row_text}
+  const response = await fetch(check_valid_word_url, {
+    method:"POST",
+    // body:check_word
+    body: JSON.stringify({word:row_text}),
+  });
+  console.log("response:", response)
 }
