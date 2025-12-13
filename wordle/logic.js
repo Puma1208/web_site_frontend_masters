@@ -51,7 +51,7 @@ function updatePointer(){
     const colors = getCorrectLetters();
     markBoxesWithColors(colors);
     if (isRowCorrectWord()){
-    console.log("🌋 YEAY! 🌋");
+      flagFinished = true;
     }
     if (current_row_index==word_rows.length-1){
       flagFinished = true;
