@@ -138,8 +138,10 @@ async function isWordValid(){
   const check_word = {"word":row_text}
   const response = await fetch(check_valid_word_url, {
     method:"POST",
-    // body:check_word
-    body: JSON.stringify({word:row_text}),
+    body: JSON.stringify(check_word)
   });
-  console.log("response:", response)
+
+  const promise = await response.json();
+  const valid = promise.validWord;
+  return valid;
 }
