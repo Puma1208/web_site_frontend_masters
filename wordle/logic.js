@@ -93,7 +93,6 @@ function getCorrectLetters(){
   // First pass - only tagging green
   for (let i=0; i<WORD_LENGTH; i++){
     if (row_text[i]==word[i]){
-      console.log("ROW LETTER ", row_text[i]);
       colors[i] = "green";
       copy_correct_word = copy_correct_word.replace(word[i], "");
     }
