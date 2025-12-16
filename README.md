@@ -13,3 +13,8 @@ My result for the calculator assignment using `css`, `html` and `javascript` is 
 
 
 <img src="calculator/Calculator.jpeg" alt="drawing" height="400"/>
+
+## WORDLE
+
+The project's focus was to implement a WORDLE-like game. The challenges to be practiced were interacting with APIs using the `GET` and `POST` commands.
+<img src="wordle/wordle.png" alt="drawing" height="400"/>
