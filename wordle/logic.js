@@ -1,12 +1,10 @@
 let word_rows = document.querySelectorAll(".row");
 let current_row_index = 0;
-let next_letter_box = word_rows[current_row_index].children[0];
+let current_letter_box = word_rows[current_row_index].children[0];
 
 let row_text = "";
 
 WORD_LENGTH = 5;
-// const word = "magic".toUpperCase();
-
 let word = "";
 getWordOfTheDay();
 
@@ -17,11 +15,8 @@ function isLetter(el){
   return /^[a-zA-Z]$/.test(el);
 }
 
-document.addEventListener('keydown', function(event){
-  handleKeyBoardInput(event);
-})
 
-function handleKeyBoardInput(event){
+async function handleKeyBoardInput(event){
   const key = event.key;
   if (!flagFinished){
     if (isLetter(key)){
@@ -29,56 +24,81 @@ function handleKeyBoardInput(event){
 
     }else if (key=="Backspace" || key=="Delete"){
       deletePreviousLetter();
+    }else if (key=="Enter" && row_text.length==WORD_LENGTH){
+      promise_valid = await isWordValid();
+
+      if (promise_valid){
+        if (isRowCorrectWord()){
+          flagFinished = true;
+        }else{
+          increaseRow();
+        }
+      }
     }
+    updateWord();
+  }
   }
 }
 
 
 function handleNewLetter(letter){
-  updateTrackingVariable(letter);
-  updatePointer();
-
+  addLetterToBox(letter);
+  increasePointer();
 }
-
-function updateTrackingVariable(letter){
-  letter = letter.toUpperCase();
-  next_letter_box.textContent = letter
-  row_text += letter;
-}
-
-function updatePointer(){
-  if (next_letter_box.nextElementSibling==null){
-    isWordValid();
-    const colors = getCorrectLetters();
-    markBoxesWithColors(colors);
-    if (isRowCorrectWord()){
-      flagFinished = true;
-    }
-    if (current_row_index==word_rows.length-1){
-      flagFinished = true;
-    }
-    else{
-      current_row_index += 1;
-      next_letter_box = word_rows[current_row_index].children[0];
-      row_text = "";
-    }
-  }else{
-    next_letter_box = next_letter_box.nextElementSibling;
-  }
-}
-
 function deletePreviousLetter(){
-  if (next_letter_box.previousElementSibling != null ){
-    current = next_letter_box.previousElementSibling;
-    row_text = row_text.slice(0, -1);
-    if (current.previousElementSibling){
-      next_letter_box.previousElementSibling.textContent = "";
-      next_letter_box = next_letter_box.previousElementSibling;
-    }else{
-      current.textContent = "";
-      next_letter_box = current;
+  decreasePointer();
+  deleteLetterFromBox();
+
+}
+
+
+function addLetterToBox(letter){
+  if (current_letter_box.textContent == ""){
+    current_letter_box.textContent = letter.toUpperCase();
+  }
+}
+function increasePointer(){
+
+  let current_row_index = 0;
+  if (current_letter_box.nextElementSibling==null){
+    if (current_row_index>=word_rows.length-1){
+      flagFinished = true;
     }
   }
+  else{
+    current_letter_box = current_letter_box.nextElementSibling
+  }
+}
+
+function increaseRow(){
+  current_row_index += 1
+  current_letter_box = word_rows[current_row_index].children[0];
+}
+function deleteLetterFromBox(){
+  current_letter_box.textContent = "";
+}
+function decreasePointer(){
+  if (current_letter_box.previousElementSibling!=null){
+    if (current_letter_box.nextElementSibling==null){
+      // This is the last cell of the row -> check if there is a letter or not to delete
+      if (current_letter_box.textContent==""){
+        current_letter_box = current_letter_box.previousElementSibling;
+      }
+    }else{
+      current_letter_box = current_letter_box.previousElementSibling;
+    }
+  }
+}
+
+function updateWord(){
+  current_cell = word_rows[current_row_index].children[0];
+  input_letters = "";
+  while (current_cell !== current_letter_box){
+    input_letters += current_cell.textContent;
+    current_cell = current_cell.nextElementSibling;
+  }
+  input_letters += current_cell.textContent;
+  row_text = input_letters;
 }
 
 function isRowCorrectWord(){
@@ -141,7 +161,10 @@ async function isWordValid(){
     body: JSON.stringify(check_word)
   });
 
-  const promise = await response.json();
-  const valid = promise.validWord;
-  return valid;
+
+  const promise_valid = await response.json();
+  return promise_valid.validWord;
 }
+document.addEventListener('keydown', async function(event){
+  handleKeyBoardInput(event);
+})
