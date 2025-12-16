@@ -5,11 +5,15 @@ let current_row_index = 0;
 let current_letter_box = word_rows[current_row_index].children[0];
 
 let row_text = "";
+current_letter_box.style.borderWidth = "2px";
+current_letter_box.style.borderColor = "#97a5b5ff";
 
 WORD_LENGTH = 5;
 let word = "";
 getWordOfTheDay();
 
+let colors_dictionary = {"green":"#63a088", "yellow":"#f9dc5c", "gray":"#465362"}
+// let colors_dictionary = {"green":"#63a088", "yellow":"#db9d47", "gray":"#37505c"}
 
 let flagFinished = false;
 
@@ -19,6 +23,7 @@ function isLetter(el){
 
 
 async function handleKeyBoardInput(event){
+  const previous = current_letter_box;
   const key = event.key;
   if (!flagFinished){
     if (isLetter(key)){
@@ -32,22 +37,47 @@ async function handleKeyBoardInput(event){
 
       if (promise_valid){
         message_to_user.textContent = "";
+        const colors = getCorrectLetters();
+        markBoxesWithColors(colors);
         if (isRowCorrectWord()){
           message_to_user.textContent = "🎊 CORRECT WORD! 🎊";
+          current_letter_box.style.borderColor = colors_dictionary["green"];
+          current_letter_box.style.borderWidth = "";
+          animateCorrectWord();
           flagFinished = true;
         }else{
           increaseRow();
         }
       }
       else{
+        animateNotValidWord();
         message_to_user.textContent = "❌ Not a valid word ❌";
       }
     }
     updateWord();
   }
+  if (!flagFinished){
+    previous.style.borderWidth = "";
+    previous.style.borderColor = "";
+    current_letter_box.style.borderWidth = "2px";
+    current_letter_box.style.borderColor = "#97a5b5ff";
   }
 }
 
+function animateNotValidWord() {
+  word_rows[current_row_index].classList.add("shake");
+  word_rows[current_row_index].addEventListener("animationend", function(){
+    this.classList.remove("shake");
+  }, {once:true});
+}
+function animateCorrectWord(){
+  const boxes = word_rows[current_row_index].querySelectorAll(".input");
+  boxes.forEach((box, index) => {
+    box.classList.add("animate");
+    box.style.animation = `zoom-in 1s ease 1`;
+    box.style.animationDelay = `${index*.1}s`;
+  });
+}
 
 function handleNewLetter(letter){
   addLetterToBox(letter);

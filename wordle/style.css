@@ -7,13 +7,14 @@ body{
     align-items: center;
     flex-flow: column;
     font-family: "Rubik", sans-serif;
-    color:#c9d4e0;
+    color:#5b6a7b;
 }
 div{
     margin: auto;
 
 }
 .title{
+    color:#3e4a58;
     border-style: solid;
     /* height: 100px; */
     width: auto;
@@ -23,7 +24,8 @@ div{
     text-align: center;
     vertical-align: middle;
     line-height: 20px;
-    font-size: 60px;
+    font-size: 90px;
+    font-weight: bold;
 }
 .loading-logo{
     /* height: 80px; */
@@ -53,8 +55,24 @@ div{
     height: 60px;
     line-height: 60px;
     border-style: solid;
-    border-color: #c9d4e0;
+    border-color: #d6dee7;
     font-size: 40px;
-    color:#829ebe;
+    color:#6c7e95;
     vertical-align: middle;
+}
+.shake {
+  animation: shake .7s ease-out 1;
+}
+@keyframes shake {
+	0%, 100% {transform: translateX(0);}
+	10%, 30%, 60%, 90% {transform: translateX(3px);}
+	25%, 45%, 75% {transform: translateX(-3px);}
+}
+
+.zoom-in{
+    animation: zoom-in 1s ease-in forwards;
+}
+@keyframes zoom-in{
+    0%, 100% {transform: scale(1);}
+    50% {transform: scale(1.09);}
 }
