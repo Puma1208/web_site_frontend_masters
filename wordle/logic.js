@@ -1,4 +1,6 @@
 let word_rows = document.querySelectorAll(".row");
+
+let message_to_user = document.querySelector(".loading-logo");
 let current_row_index = 0;
 let current_letter_box = word_rows[current_row_index].children[0];
 
@@ -25,14 +27,20 @@ async function handleKeyBoardInput(event){
     }else if (key=="Backspace" || key=="Delete"){
       deletePreviousLetter();
     }else if (key=="Enter" && row_text.length==WORD_LENGTH){
+      message_to_user.textContent = "...";
       promise_valid = await isWordValid();
 
       if (promise_valid){
+        message_to_user.textContent = "";
         if (isRowCorrectWord()){
+          message_to_user.textContent = "🎊 CORRECT WORD! 🎊";
           flagFinished = true;
         }else{
           increaseRow();
         }
+      }
+      else{
+        message_to_user.textContent = "❌ Not a valid word ❌";
       }
     }
     updateWord();
