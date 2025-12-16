@@ -32,11 +32,12 @@ async function handleKeyBoardInput(event){
     }else if (key=="Backspace" || key=="Delete"){
       deletePreviousLetter();
     }else if (key=="Enter" && row_text.length==WORD_LENGTH){
-      message_to_user.textContent = "...";
+      message_to_user.textContent = "🌀";
+      animateLoading(message_to_user);
       promise_valid = await isWordValid();
 
       if (promise_valid){
-        message_to_user.textContent = "";
+        message_to_user.textContent = " ";
         const colors = getCorrectLetters();
         markBoxesWithColors(colors);
         if (isRowCorrectWord()){
@@ -64,6 +65,13 @@ async function handleKeyBoardInput(event){
   }
 }
 
+function animateLoading(element){
+  element.classList.add("rotate");
+  element.addEventListener("animationend", function(){
+    this.classList.remove("rotate");
+  });
+
+}
 function animateNotValidWord() {
   word_rows[current_row_index].classList.add("shake");
   word_rows[current_row_index].addEventListener("animationend", function(){
