@@ -25,25 +25,37 @@ function isLetter(el){
 async function handleKeyBoardInput(event){
   const previous = current_letter_box;
   const key = event.key;
+  // Check if the game is over - either the user found the word or used all the tries
   if (!flagFinished){
     if (isLetter(key)){
+      // The user pressed a letter
       handleNewLetter(key);
 
     }else if (key=="Backspace" || key=="Delete"){
+      // The user pressed Delete
       deletePreviousLetter();
     }else if (key=="Enter" && row_text.length==WORD_LENGTH){
+      // The user pressed enter so the input word/row can be verified if the row is complete
       message_to_user.textContent = "🌀";
+
+      // Animation showing the user information is loading
       animateLoading(message_to_user);
       promise_valid = await isWordValid();
 
       if (promise_valid){
+        // User's input is a valid word
         message_to_user.textContent = " ";
+
+        // Adding colors to user's text
         const colors = getCorrectLetters();
         markBoxesWithColors(colors);
+
         if (isRowCorrectWord()){
+          // The user found the word of hte day
           message_to_user.textContent = "🎊 CORRECT WORD! 🎊";
           current_letter_box.style.borderColor = colors_dictionary["green"];
           current_letter_box.style.borderWidth = "";
+          // Animate the word to show the guess is right
           animateCorrectWord();
           flagFinished = true;
         }else{
@@ -51,6 +63,7 @@ async function handleKeyBoardInput(event){
         }
       }
       else{
+        // User's input is not valid word -> animate
         animateNotValidWord();
         message_to_user.textContent = "❌ Not a valid word ❌";
       }
