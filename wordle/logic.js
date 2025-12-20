@@ -59,7 +59,13 @@ async function handleKeyBoardInput(event){
           // Animate the word to show the guess is right
           animateCorrectWord();
           flagFinished = true;
-        }else{
+        }else if(current_row_index==word_rows.length-1){
+          // The user has used all the guesses and not found the word - Lost
+          message_to_user.textContent = `All attempts used, the WOD was: ${word}`;
+          flagFinished = true;
+        }
+        else{
+          // The user has not yet won or lost and can keep guessing on the next row
           increaseRow();
         }
       }
@@ -69,7 +75,9 @@ async function handleKeyBoardInput(event){
         message_to_user.textContent = "❌ Not a valid word ❌";
       }
     }
-    updateWord();
+    if(!flagFinished){
+      updateWord();
+    }
   }
   if (!flagFinished){
     previous.style.borderWidth = "";
@@ -131,7 +139,9 @@ function increasePointer(){
 
 function increaseRow(){
   current_row_index += 1
-  current_letter_box = word_rows[current_row_index].children[0];
+  if (current_row_index<word_rows.length){
+    current_letter_box = word_rows[current_row_index].children[0];
+  }
 }
 function deleteLetterFromBox(){
   current_letter_box.textContent = "";
