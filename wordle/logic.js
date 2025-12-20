@@ -41,6 +41,7 @@ async function handleKeyBoardInput(event){
       // Animation showing the user information is loading
       animateLoading(message_to_user);
       promise_valid = await isWordValid();
+      stopAnimateLoading(message_to_user);
 
       if (promise_valid){
         // User's input is a valid word
@@ -80,10 +81,9 @@ async function handleKeyBoardInput(event){
 
 function animateLoading(element){
   element.classList.add("rotate");
-  element.addEventListener("animationend", function(){
-    this.classList.remove("rotate");
-  });
-
+}
+function stopAnimateLoading(element){
+  element.classList.remove("rotate");
 }
 function animateNotValidWord() {
   word_rows[current_row_index].classList.add("shake");
