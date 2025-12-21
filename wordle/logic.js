@@ -216,7 +216,7 @@ function markBoxesWithColors(colors){
 }
 
 async function getWordOfTheDay(){
-  const word_url = "https://words.dev-apis.com/word-of-the-day";
+  const word_url = "https://words.dev-apis.com/word-of-the-day?random=1";
   const promise = await fetch(word_url);
   const processResponse = await promise.json();
   word = processResponse.word.toUpperCase();
